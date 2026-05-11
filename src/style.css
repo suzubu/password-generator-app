@@ -108,6 +108,7 @@ main {
   display: flex;
   flex-direction: column;
   width: 100%;
+  max-width: 40rem;
   gap: 1rem;
   padding: 1rem;
 }
@@ -128,13 +129,43 @@ h1 {
 }
 
 .password-field {
-  color: var(--grey-200);
+  color: var(--grey-700);
 }
 
 .copy-button {
   background-color: transparent;
   border: none;
   cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.copied-label {
+  color: var(--green-200);
+  text-transform: uppercase;
+  font-size: 1rem;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.copied-label.visible {
+  opacity: 1;
+}
+
+.copy-button svg {
+  border: none;
+  cursor: pointer;
+}
+
+.copy-button svg path {
+  fill: var(--green-200);
+}
+
+.copy-button:hover svg path {
+  fill: var(--white);
+  transition: fill 0.15s ease;
 }
 
 .controls {
@@ -162,10 +193,10 @@ input[type="range"] {
   appearance: none;
   cursor: pointer;
   width: 100%;
-  background: var(--grey-950);
   height: 8px;
+  background: var(--grey-950);
   background-image: linear-gradient(var(--green-200));
-  background-size: 50% 100%;
+  background-size: 0% 100%;
   background-repeat: no-repeat;
 }
 
@@ -193,12 +224,32 @@ input[type="checkbox"] {
   -webkit-appearance: none;
   appearance: none;
   background-color: transparent;
+  position: relative;
   margin: 0.5rem;
   color: currentColor;
   width: 1.25rem;
   height: 1.25rem;
   border: 0.15rem solid currentColor;
-  transform: translateY(-0.35rem);
+  transform: translateY(-0.25rem);
+}
+input[type="checkbox"]:checked {
+  background-color: var(--green-200);
+  border-color: var(--green-200);
+}
+
+input[type="checkbox"]:checked::after {
+  position: absolute;
+  top: 55%;
+  left: 55%;
+  transform: translate(-50%, -50%);
+  content: "";
+  display: block;
+  width: 14px;
+  height: 12px;
+  background-image: url("/src/assets/images/icon-check.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
 }
 
 .strength-wrapper {
@@ -234,13 +285,58 @@ input[type="checkbox"] {
   margin: 0 0.15rem;
 }
 
+.strength-value.too-weak {
+  background-color: var(--red-500);
+  border-color: var(--red-500);
+}
+.strength-value.weak {
+  background-color: var(--orange-400);
+  border-color: var(--orange-400);
+}
+.strength-value.medium {
+  background-color: var(--yellow-300);
+  border-color: var(--yellow-300);
+}
+.strength-value.strong {
+  background-color: var(--green-200);
+  border-color: var(--green-200);
+}
+
 #generate {
   background-color: var(--green-200);
-  border: none;
+  border: 2px solid transparent;
   width: 100%;
   padding: 1rem;
   margin-top: 1rem;
-  color: var(--black);
+  color: var(--grey-850);
   text-transform: uppercase;
   cursor: pointer;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+#generate:hover {
+  background-color: transparent;
+  color: var(--green-200);
+  border-color: var(--green-200);
+}
+
+.arrow-icon {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background-color: var(--black);
+  -webkit-mask-image: url("/src/assets/images/icon-arrow-right.svg");
+  mask-image: url("/src/assets/images/icon-arrow-right.svg");
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  transition: background-color 0.15s ease;
+}
+
+#generate:hover .arrow-icon {
+  background-color: var(--green-200);
 }
