@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon"
+        type="image/svg+xml"
+        href="/favicon.svg" />
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0" />
+  <title>password-generator-app</title>
+  <link rel="stylesheet"
+        href="/src/style.css">
+</head>
+
+<body>
+  <main>
+    <h1 class="text-4">Password Generator</h1>
+    <section class="results">
+      <div class="password-wrapper">
+        <div class="password-field text-2">P4$5W0rD!</div>
+        <button type="button"
+                class="copy-button"
+                aria-label="Copy password">
+          <img src="/src/assets/images/icon-copy.svg"
+               alt=""
+               aria-hidden="true">
+        </button>
+
+      </div>
+    </section>
+    <section class="controls">
+      <form class="password-controls">
+        <div class="slider-wrapper">
+          <div class="slider-label">
+            <label for="char-length"
+                   class="text-4">Character Length</label>
+            <output type="number"
+                    class="char-length-output text-2">20</output>
+          </div>
+          <input type="range"
+                 class="slider"
+                 id="char-length"
+                 name="char-length"
+                 min="8"
+                 max="32"
+                 step="1"
+                 value="20">
+        </div>
+        <fieldset>
+          <legend class="visually-hidden">Password character options</legend>
+
+          <div class="check-box-wrapper">
+            <label><input type="checkbox"
+                     name="include"
+                     value="uppercase"> Include Uppercase Letters</label>
+            <label><input type="checkbox"
+                     name="include"
+                     value="lowercase"> Include Lowercase Letters</label>
+            <label><input type="checkbox"
+                     name="include"
+                     value="numbers"> Include Numbers</label>
+            <label><input type="checkbox"
+                     name="include"
+                     value="symbols"> Include Symbols</label>
+          </div>
+        </fieldset>
+      </form>
+      <div class="strength-wrapper"
+           aria-live="polite">
+        <p class="text-4">Strength</p>
+        <div class="strength-scale">
+          <p class="text-3"
+             id="strength-label"></p>
+          <div class="strength-value"></div>
+          <div class="strength-value"></div>
+          <div class="strength-value"></div>
+          <div class="strength-value"></div>
+        </div>
+      </div>
+      <button type="button"
+              id="generate"
+              class="text-4">Generate <span><img
+               src="/src/assets/images/icon-arrow-right.svg"
+               alt=""
+               aria-hidden="true"></span></button>
+
+    </section>
+  </main>
+
+  <script type="module"
+          src="src/main.js"></script>
+</body>
+
+</html>

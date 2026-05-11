@@ -1,0 +1,246 @@
+@font-face {
+  font-family: JetBrainsMonoBold;
+  src: url(/src/assets/fonts/JetBrainsMono-VariableFont_wght.ttf);
+  font-weight: bold;
+}
+
+/* CUSTOM PROPERTIES */
+:root {
+  /* colours */
+  --white: #fff;
+  --black: #000;
+
+  --grey-950: #08070b;
+  --grey-900: #14132b;
+  --grey-850: #18171f;
+  --grey-800: #24232c;
+  --grey-700: #54535b;
+  --grey-600: #817d92;
+  --grey-200: #e6e5ea;
+
+  --green-200: #a4ffaf;
+  --yellow-300: #f8cd65;
+  --orange-400: #fb7c58;
+  --red-500: #f64a4a;
+
+  /* spacing */
+  --spacing-100: 8px;
+  --spacing-200: 16px;
+  --spacing-300: 24px;
+  --spacing-400: 32px;
+  --spacing-700: 56px;
+  --spacing-1000: 80px;
+  --spacing-1300: 104px;
+  --spacing-1600: 128px;
+  --spacing-2000: 160px;
+  --spacing-2200: 176px;
+  --spacing-2300: 184px;
+}
+
+/* RESET */
+*,
+*::before,
+*::after,
+*::placeholder {
+  font-family: inherit;
+  font-weight: inherit;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* BASE */
+html {
+  font-family: JetBrainsMonoBold, monospace;
+  font-weight: 700;
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--grey-950);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* PRESETS  */
+.gradient-1 {
+  background: linear-gradient(#14231b, #08070b);
+}
+
+.text-1 {
+  font-size: 2rem;
+  line-height: 1.3;
+}
+.text-2 {
+  font-size: 1.5rem;
+  line-height: 1.3;
+}
+.text-3 {
+  font-size: 1.125rem;
+  line-height: 1.3;
+}
+.text-4 {
+  font-size: 1rem;
+  line-height: 1.25;
+}
+
+/*  LAYOUT */
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+h1 {
+  color: var(--grey-700);
+  text-align: center;
+  width: 100%;
+  padding-top: var(--spacing-1000);
+}
+
+.password-wrapper {
+  background-color: var(--grey-800);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.password-field {
+  color: var(--grey-200);
+}
+
+.copy-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.controls {
+  background-color: var(--grey-800);
+  padding: 1rem;
+}
+
+.slider-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+}
+
+.slider-label label {
+  color: var(--white);
+}
+
+.char-length-output {
+  color: var(--green-200);
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  width: 100%;
+  background: var(--grey-950);
+  height: 8px;
+  background-image: linear-gradient(var(--green-200));
+  background-size: 50% 100%;
+  background-repeat: no-repeat;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 28px;
+  height: 28px;
+  background-color: var(--white);
+  border-radius: 50%;
+}
+
+fieldset {
+  border: none;
+  padding-top: 2rem;
+}
+
+fieldset label {
+  color: var(--grey-200);
+  display: grid;
+  grid-template-columns: 2rem auto;
+  gap: 0.5rem;
+  line-height: 1.75;
+}
+input[type="checkbox"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  margin: 0.5rem;
+  color: currentColor;
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 0.15rem solid currentColor;
+  transform: translateY(-0.35rem);
+}
+
+.strength-wrapper {
+  background-color: var(--grey-950);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  margin-top: 1.5rem;
+}
+
+.strength-wrapper > p {
+  color: var(--grey-600);
+  text-transform: uppercase;
+}
+
+.strength-scale > p {
+  color: var(--white);
+  text-transform: uppercase;
+  padding-right: 1rem;
+}
+
+.strength-scale {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.strength-value {
+  width: 10px;
+  height: 25px;
+  border: solid 0.15rem var(--white);
+  margin: 0 0.15rem;
+}
+
+#generate {
+  background-color: var(--green-200);
+  border: none;
+  width: 100%;
+  padding: 1rem;
+  margin-top: 1rem;
+  color: var(--black);
+  text-transform: uppercase;
+  cursor: pointer;
+}
