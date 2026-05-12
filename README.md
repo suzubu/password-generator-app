@@ -34,7 +34,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [Repo](https://github.com/suzubu/password-generator-app)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Live Site URL: [Live URL](https://suzubu.github.io/password-generator-app/)
 
 ## My process
 
