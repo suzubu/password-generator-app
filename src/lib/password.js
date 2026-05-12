@@ -5,6 +5,15 @@ export const charSets = {
   symbols: "!@#$%^&*()_+-=[]{}|;:,.<>?",
 };
 
+function getUnbiasedRandom(max) {
+  const limit = Math.floor(2 ** 32 / max) * max;
+  let value;
+  do {
+    value = crypto.getRandomValues(new Uint32Array(1))[0];
+  } while (value >= limit);
+  return value % max;
+}
+
 export function generatePassword(length, options) {
   if (options.length === 0 || length === 0) return null;
 
@@ -12,9 +21,7 @@ export function generatePassword(length, options) {
   let password = "";
 
   for (let i = 0; i < length; i++) {
-    const randomIndex =
-      crypto.getRandomValues(new Uint32Array(1))[0] % pool.length;
-    password += pool[randomIndex];
+    password += pool[getUnbiasedRandom(pool.length)];
   }
 
   return password;
