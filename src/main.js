@@ -7,10 +7,27 @@ function init() {
   const checkboxes = document.querySelectorAll('input[type="checkbox"]');
   const strengthLabel = document.querySelector("#strength-label");
   const strengthValues = document.querySelectorAll(".strength-value");
-  const generateButton = document.querySelector("#generate");
+  const generateButton = document.querySelector(".generate-btn");
   const passwordDisplay = document.querySelector("#password-display");
   const copiedLabel = document.querySelector("#copied-label");
   const copyButton = document.querySelector(".copy-button");
+
+  // bail early if any critical element is missing
+  if (
+    !range ||
+    !charLengthOutput ||
+    !generateButton ||
+    !passwordDisplay ||
+    !copyButton
+  ) {
+    console.warn("Password generator: required elements not found");
+    return;
+  }
+
+  // clipboard guard
+  if (!navigator.clipboard) {
+    console.warn("Clipboard API not available");
+  }
 
   // constants
   const charSets = {
@@ -123,7 +140,7 @@ function init() {
     if (!password || password === "P4$5W0rD!") return;
 
     navigator.clipboard.writeText(password).then(() => {
-      copiedLabel.textContent = "Password Copied";
+      copiedLabel.textContent = "Copied";
       copiedLabel.classList.add("visible");
     });
   });
