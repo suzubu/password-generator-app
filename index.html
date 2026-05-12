@@ -9,7 +9,8 @@
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0" />
   <title>password-generator-app</title>
-  <script type="module" crossorigin src="/password-generator-app/assets/index-Cd4rXcag.js"></script>
+
+  <script type="module" crossorigin src="/password-generator-app/assets/index-C2j0kO4t.js"></script>
   <link rel="stylesheet" crossorigin href="/password-generator-app/assets/index-BvBszzr-.css">
 </head>
 
@@ -19,12 +20,15 @@
     <section class="results">
       <div class="password-wrapper">
         <div class="password-field large-text"
-             id="password-display">P4$5W0rD!</div>
+             id="password-display"
+             role="status"
+             aria-label="Generate Password">P4$5W0rD!</div>
         <button type="button"
                 class="copy-button"
                 aria-label="Copy password">
           <span class="copied-label"
-                id="copied-label"></span>
+                id="copied-label"
+                aria-live="polite"></span>
           <svg width="21"
                height="24"
                xmlns="http://www.w3.org/2000/svg">
