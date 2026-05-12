@@ -1,4 +1,9 @@
 import "./main.css";
+import {
+  charSets,
+  generatePassword,
+  calculateStrength,
+} from "./lib/password.js";
 
 function init() {
   // elements
@@ -24,19 +29,6 @@ function init() {
     return;
   }
 
-  // clipboard guard
-  if (!navigator.clipboard) {
-    console.warn("Clipboard API not available");
-  }
-
-  // constants
-  const charSets = {
-    uppercase: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
-    lowercase: "abcdefghijklmnopqrstuvwxyz",
-    numbers: "0123456789",
-    symbols: "!@#$%^&*()_+-=[]{}|;:,.<>?",
-  };
-
   // slider
   function updateSlider() {
     const min = Number(range.min);
@@ -55,17 +47,7 @@ function init() {
       .map((checkbox) => checkbox.value);
   }
 
-  // strength
-  function calculateStrength(length, options) {
-    const numOptions = options.length;
-
-    if (numOptions === 0) return null;
-    if (numOptions === 1 || length <= 5) return "too-weak";
-    if (numOptions === 2 || length <= 10) return "weak";
-    if (numOptions === 3 || length <= 15) return "medium";
-    return "strong";
-  }
-
+  // strength UI
   function updateStrengthUI(strength) {
     strengthValues.forEach((el) => {
       el.classList.remove("too-weak", "weak", "medium", "strong");
@@ -96,22 +78,6 @@ function init() {
     updateStrengthUI(strength);
   }
 
-  // password generation
-  function generatePassword(length, options) {
-    if (options.length === 0 || length === 0) return null;
-
-    const pool = options.map((option) => charSets[option]).join("");
-    let password = "";
-
-    for (let i = 0; i < length; i++) {
-      const randomIndex =
-        crypto.getRandomValues(new Uint32Array(1))[0] % pool.length;
-      password += pool[randomIndex];
-    }
-
-    return password;
-  }
-
   // event listeners
   range.addEventListener("input", updateSlider);
   range.addEventListener("input", updateStrength);
@@ -139,10 +105,20 @@ function init() {
 
     if (!password || password === "P4$5W0rD!") return;
 
-    navigator.clipboard.writeText(password).then(() => {
-      copiedLabel.textContent = "Copied";
-      copiedLabel.classList.add("visible");
-    });
+    if (!navigator.clipboard) {
+      console.warn("Clipboard API not available");
+      return;
+    }
+
+    navigator.clipboard
+      .writeText(password)
+      .then(() => {
+        copiedLabel.textContent = "Copied";
+        copiedLabel.classList.add("visible");
+      })
+      .catch((err) => {
+        console.warn("Failed to copy password:", err);
+      });
   });
 
   // initialize
