@@ -111,6 +111,8 @@ generateButton.addEventListener("click", () => {
 
   const password = generatePassword(length, options);
   passwordDisplay.textContent = password;
+  passwordDisplay.classList.add("active");
+
   passwordGenerated = true;
 
   copiedLabel.classList.remove("visible");

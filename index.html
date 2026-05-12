@@ -15,10 +15,10 @@
 
 <body>
   <main>
-    <h1 class="text-4">Password Generator</h1>
+    <h1 class="small-text">Password Generator</h1>
     <section class="results">
       <div class="password-wrapper">
-        <div class="password-field text-2"
+        <div class="password-field large-text"
              id="password-display">P4$5W0rD!</div>
         <button type="button"
                 class="copy-button"
@@ -39,16 +39,16 @@
         <div class="slider-wrapper">
           <div class="slider-label">
             <label for="char-length"
-                   class="text-4">Character Length</label>
+                   class="small-text">Character Length</label>
             <output id="output"
-                    class="text-2 char-length-output">0</output>
+                    class="large-text char-length-output">0</output>
           </div>
           <input type="range"
                  class="slider"
                  id="char-length"
                  name="char-length"
                  min="0"
-                 max="32"
+                 max="20"
                  step="1"
                  value="0">
         </div>
@@ -73,9 +73,9 @@
       </form>
       <div class="strength-wrapper"
            aria-live="polite">
-        <p class="text-4">Strength</p>
+        <p class="small-text">Strength</p>
         <div class="strength-scale">
-          <p class="text-3"
+          <p class="small-text"
              id="strength-label"></p>
           <div class="strength-value"></div>
           <div class="strength-value"></div>
@@ -85,7 +85,7 @@
       </div>
       <button type="button"
               id="generate"
-              class="text-4">
+              class="small-text">
         Generate
         <span class="arrow-icon"></span>
       </button>
